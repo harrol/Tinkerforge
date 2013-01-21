@@ -6,8 +6,8 @@ import com.tinkerforge.IPConnection;
 
 public class Servo {
 
-    private static final Short S1 = 2;
-    private static final Short S2 = 5;
+    private static final Short S1 = 0;
+    private static final Short S2 = 1;
 
     public static void main(String[] args) throws Exception {
 
@@ -30,7 +30,7 @@ public class Servo {
 
         servo.enable(S1);
         servo.enable(S2);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             servo.setPosition(S1, Short.MIN_VALUE);
             servo.setPosition(S2, Short.MAX_VALUE);
             Thread.sleep(2000l);
