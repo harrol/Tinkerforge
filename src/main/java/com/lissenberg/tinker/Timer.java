@@ -20,9 +20,9 @@ public class Timer {
 
         System.in.read();
         running = false;
-        lcd.clearDisplay();
         lcd.backlightOff();
         Thread.sleep(1001);
+        lcd.clearDisplay();
         ip.destroy();
     }
 
