@@ -43,14 +43,18 @@ public class Tweet {
         executor.awaitTermination(NR * SECS, TimeUnit.SECONDS);
 
         lcd.backlightOff();
+        lcd.clearDisplay();
         ip.destroy();
     }
 
     private static void updateLCD(TweetData tweet) {
+        lcd.clearDisplay();
         if (tweet == null) {
             lcd.writeLine((short) 0, (short) 0, "No tweets for:");
             lcd.writeLine((short) 1, (short) 0, KEYWORD);
         } else {
+            System.out.println(tweet.from);
+            System.out.println(tweet.text);
             lcd.writeLine((short) 0, (short) 0, tweet.from);
             String[] strings = threeLines(tweet.text);
             lcd.writeLine((short) 1, (short) 0, strings[0]);

@@ -23,10 +23,10 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static final String PROJECT_ID = "project2";
-    public static final String BUILD_ID = "bt2";
+    public static final String PROJECT_ID = "project7";
+    public static final String BUILD_ID = "bt18";
 
-    private static final URI BASE = UriBuilder.fromPath("http://localhost:8111/httpAuth").build();
+    private static final URI BASE = UriBuilder.fromPath("http://purebuild.chess.int:8111/httpAuth").build();
     private static BrickletLCD20x4 lcd = null;
     private static WebResource resource = null;
 
@@ -44,7 +44,7 @@ public class Main {
 
         ClientConfig config = new DefaultClientConfig();
         Client client = Client.create(config);
-        client.addFilter(new HTTPBasicAuthFilter("admin", "admin"));
+        client.addFilter(new HTTPBasicAuthFilter("hali", "hali"));
         resource = client.resource(BASE);
 
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);

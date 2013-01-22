@@ -9,6 +9,7 @@ public class Servo {
     private static final Short S1 = 0;
     private static final Short S2 = 1;
 
+
     public static void main(String[] args) throws Exception {
 
         IPConnection ip = new IPConnection("localhost", 4223);
