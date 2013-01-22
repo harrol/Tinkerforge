@@ -22,6 +22,7 @@ public class Timer {
         running = false;
         lcd.clearDisplay();
         lcd.backlightOff();
+        Thread.sleep(1001);
         ip.destroy();
     }
 
@@ -65,11 +66,11 @@ public class Timer {
         boolean b2 = ((time >> 2) & 1) != 0;
         boolean b3 = ((time >> 3) & 1) != 0;
         boolean b4 = ((time >> 4) & 1) != 0;
-        write(0, b0);
-        write(1, b1);
+        write(4, b0);
+        write(3, b1);
         write(2, b2);
-        write(3, b3);
-        write(4, b4);
+        write(1, b3);
+        write(0, b4);
     }
 
     /**
