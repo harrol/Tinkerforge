@@ -16,12 +16,12 @@ public class Timer {
         lcd.clearDisplay();
         lcd.backlightOn();
 
-        new Thread(new CountDown(35)).start();
+        new Thread(new CountDown(32)).start();
 
         System.in.read();
         running = false;
-        lcd.backlightOff();
         Thread.sleep(1001);
+        lcd.backlightOff();
         lcd.clearDisplay();
         ip.destroy();
     }
@@ -48,7 +48,15 @@ public class Timer {
                 }
                 if(secs <= 0) {
                     System.out.println("TIME!");
-                    running = false;
+                    try {
+                        if(lcd.isBacklightOn()) {
+                            lcd.backlightOff();
+                        } else {
+                            lcd.backlightOn();
+                        }
+                    } catch (IPConnection.TimeoutException e) {
+                        e.printStackTrace();
+                    }
                 }
 
             }
@@ -60,6 +68,9 @@ public class Timer {
         // 5 ^ 2 = 32;
         if(time > 31) {
             time = 31;
+        }
+        if(time < 1) {
+            time = 0;
         }
         boolean b0 = ((time >> 0) & 1) != 0;
         boolean b1 = ((time >> 1) & 1) != 0;
