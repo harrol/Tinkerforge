@@ -57,14 +57,14 @@ public class Timer {
 
     private static void writeTime(int time) {
         // 5 ^ 2 = 32;
-        if(time > 32) {
-            time = 32;
+        if(time > 31) {
+            time = 31;
         }
-        boolean b0 = ((0 >> time) & 1) != 0;
-        boolean b1 = ((1 >> time) & 1) != 0;
-        boolean b2 = ((2 >> time) & 1) != 0;
-        boolean b3 = ((3 >> time) & 1) != 0;
-        boolean b4 = ((4 >> time) & 1) != 0;
+        boolean b0 = ((time >> 0) & 1) != 0;
+        boolean b1 = ((time >> 1) & 1) != 0;
+        boolean b2 = ((time >> 2) & 1) != 0;
+        boolean b3 = ((time >> 3) & 1) != 0;
+        boolean b4 = ((time >> 4) & 1) != 0;
         write(0, b0);
         write(1, b1);
         write(2, b2);
@@ -87,15 +87,15 @@ public class Timer {
         //   x
         short pos = (short)(location * 4);
         if(one) {
-            lcd.writeLine((short)0, pos, " x ");
-            lcd.writeLine((short)1, pos, " x ");
-            lcd.writeLine((short)2, pos, " x ");
-            lcd.writeLine((short)3, pos, " x ");
+            lcd.writeLine((short)0, pos, " \uFFFF ");
+            lcd.writeLine((short)1, pos, " \uFFFF ");
+            lcd.writeLine((short)2, pos, " \uFFFF ");
+            lcd.writeLine((short)3, pos, " \uFFFF ");
         } else {
-            lcd.writeLine((short)0, pos, " x ");
-            lcd.writeLine((short)1, pos, "x x");
-            lcd.writeLine((short)2, pos, "x x");
-            lcd.writeLine((short)3, pos, " x ");
+            lcd.writeLine((short)0, pos, " \uFFFF ");
+            lcd.writeLine((short)1, pos, "\uFFFF \uFFFF");
+            lcd.writeLine((short)2, pos, "\uFFFF \uFFFF");
+            lcd.writeLine((short)3, pos, " \uFFFF ");
         }
     }
 
